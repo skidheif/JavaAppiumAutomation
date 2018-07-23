@@ -131,6 +131,47 @@ public class FirstTest {
         );
     }
 
+    @Test
+    public void testEx3SearchAndCancelSearch()
+    {
+        waitForElementAndClick(
+                By.xpath("//*[contains(@text,'Search Wikipedia')]"),
+                "Cannot find Search Wikipedia input",
+                5
+        );
+
+        waitForElementAndSendKeys(
+                By.xpath("//*[contains(@text,'Search…')]"),
+                "Swift",
+                "Cannot find search input",
+                5
+        );
+        //methods for check elements on the page
+        waitForElementPresent(
+                By.xpath("//*[@resource-id = 'org.wikipedia:id/page_list_item_container']//*[@text = 'Family of birds']"),
+                "Cannot find 'Family of birds' topic searching by Swift",
+                15
+        );
+
+        waitForElementPresent(
+                By.xpath("//*[@resource-id = 'org.wikipedia:id/page_list_item_container']//*[@text = 'General-purpose, multi-paradigm, compiled programming language']"),
+                "Cannot find 'General-purpose, multi-paradigm, compiled programming language' topic searching by Swift",
+                15
+        );
+        //clear word in the search
+        waitForElementAndClear(
+                By.id("org.wikipedia:id/search_src_text"),
+                "Cannot find search field",
+                5
+        );
+        //check that the item is clear
+        waitForElementPresent(
+                By.id("org.wikipedia:id/search_empty_message"),
+                "Cannot find 'Search and read the free encyclopedia in your language'",
+                15
+        );
+    }
+
     //under this line are located methods
 
     private WebElement waitForElementPresent(By by, String error_message, long timeoutInSeconds)
