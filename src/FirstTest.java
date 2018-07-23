@@ -176,4 +176,22 @@ public class FirstTest {
         element.clear();
         return element;
     }
+
+    //under this line are located method for homework
+    private void waitForSearchTextAndCheck()
+    {
+        WebElement search_element =  waitForElementPresent(
+                By.id("org.wikipedia:id/search_src_text"),
+                "Cannot find search element",
+                20
+        );
+
+        String search_text = search_element.getAttribute("text");
+
+        Assert.assertEquals(
+                "We see unexpected search_element",
+                "Search…",
+                search_text
+        );
+    }
 }
