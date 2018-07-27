@@ -150,14 +150,14 @@ public class FirstTest {
         );
         //methods for check elements on the page
         waitForElementPresent(
-                By.xpath("//*[@resource-id = 'org.wikipedia:id/page_list_item_container']//*[@text = 'Family of birds']"),
-                "Cannot find 'Family of birds' topic searching by Swift",
+                By.xpath("//*[@resource-id = 'org.wikipedia:id/page_list_item_container'][@index = " + 0 + "]"),
+                "Cannot find the first element in list, searching by Swift",
                 15
         );
 
         waitForElementPresent(
-                By.xpath("//*[@resource-id = 'org.wikipedia:id/page_list_item_container']//*[@text = 'General-purpose, multi-paradigm, compiled programming language']"),
-                "Cannot find 'General-purpose, multi-paradigm, compiled programming language' topic searching by Swift",
+                By.xpath("//*[@resource-id = 'org.wikipedia:id/page_list_item_container'][@index = " + 1 + "]"),
+                "Cannot find the second element in list, searching by Swift",
                 15
         );
         //clear word in the search
