@@ -651,9 +651,37 @@ public class FirstTest {
     // End of the homework "Ex5: Тест: сохранение двух статей"
 
 
+    //Under this line are located homework "Ex6: Тест: assert title"
+    @Test
+    public void Ex6TestAssertTitle()
+    {
+        waitForElementAndClick(
+                By.xpath("//*[contains(@text,'Search Wikipedia')]"),
+                "Cannot find Search Wikipedia input",
+                15
+        );
 
+        waitForElementAndSendKeys(
+                By.xpath("//*[contains(@text,'Search…')]"),
+                "Swift",
+                "Cannot find search input",
+                15
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@resource-id = 'org.wikipedia:id/page_list_item_container'][@index = " + 0 + "]"),
+                "Cannot find the first element in list, searching by Swift",
+                15
+        );
+
+        assertElementPresentEx6(
+                By.id("org.wikipedia:id/view_page_title_text")
+        );
+    }
+    // End of the homework "Ex6: Тест: assert title"
+
+    
     //under this line are located methods
-
     private WebElement waitForElementPresent(By by, String error_message, long timeoutInSeconds)
     {
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
@@ -788,5 +816,16 @@ public class FirstTest {
                 "Search…",
                 search_text
         );
+    }
+
+    //under this line is located method for task Ex6
+    private void assertElementPresentEx6(By by)
+    {
+        try {
+            WebElement element = driver.findElement(by);
+        }
+        catch (org.openqa.selenium.NoSuchElementException exception) {
+            throw new AssertionError("Element " + by.toString() + " not found on the page");
+        }
     }
 }
