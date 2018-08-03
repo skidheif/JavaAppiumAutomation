@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab09f7d5-77b7-4f5d-9e5b-aa3efd3aa26f" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/lib/CoreTestCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FirstTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FirstTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -17,8 +19,20 @@
       <file leaf-file-name="FirstTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/FirstTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2695">
-              <caret line="823" column="52" selection-start-line="823" selection-start-column="52" selection-end-line="823" selection-end-column="52" />
+            <state relative-caret-position="-1798">
+              <caret line="675" lean-forward="true" selection-start-line="675" selection-end-line="675" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CoreTestCase.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/lib/CoreTestCase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="27" column="52" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -53,6 +67,9 @@
         <option value="$PROJECT_DIR$/src/FirstTest.java" />
         <option value="$PROJECT_DIR$/src/FirstTest.java" />
         <option value="$PROJECT_DIR$/src/FirstTest.java" />
+        <option value="$PROJECT_DIR$/src/lib/CoreTestCase.java" />
+        <option value="$PROJECT_DIR$/src/FirstTest.java" />
+        <option value="$PROJECT_DIR$/src/FirstTest.java" />
       </list>
     </option>
   </component>
@@ -70,7 +87,6 @@
     <panes>
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -83,10 +99,17 @@
               <item name="JavaAppiumAutomation" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="JavaAppiumAutomation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JavaAppiumAutomation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -266,15 +289,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="FirstTest_Ex6TestAssertTitle - 2018.07.31 at 12h 06m 24s.xml">
-      <configuration name="FirstTest.Ex6TestAssertTitle" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FirstTest_Ex6TestAssertTitle - 2018.07.31 at 12h 11m 31s.xml">
-      <configuration name="FirstTest.Ex6TestAssertTitle" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FirstTest_Ex6TestAssertTitle - 2018.07.31 at 13h 24m 27s.xml">
-      <configuration name="FirstTest.Ex6TestAssertTitle" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="FirstTest_Ex6TestAssertTitle - 2018.07.31 at 16h 50m 07s.xml">
       <configuration name="FirstTest.Ex6TestAssertTitle" configurationId="JUnit" />
     </history-entry>
@@ -296,6 +310,15 @@
     <history-entry file="FirstTest_Ex6TestAssertTitle - 2018.08.01 at 12h 25m 27s.xml">
       <configuration name="FirstTest.Ex6TestAssertTitle" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="FirstTest_Ex6TestAssertTitle - 2018.08.03 at 10h 42m 09s.xml">
+      <configuration name="FirstTest.Ex6TestAssertTitle" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FirstTest_Ex6TestAssertTitle - 2018.08.03 at 10h 44m 57s.xml">
+      <configuration name="FirstTest.Ex6TestAssertTitle" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FirstTest_Ex6TestAssertTitle - 2018.08.03 at 10h 47m 26s.xml">
+      <configuration name="FirstTest.Ex6TestAssertTitle" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="36" y="22" width="1244" height="778" extended-state="0" />
@@ -303,7 +326,7 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32892805" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
@@ -314,7 +337,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19800332" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20715474" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -347,6 +370,56 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/FirstTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12360">
+          <caret line="824" column="87" selection-start-line="824" selection-start-column="87" selection-end-line="824" selection-end-column="87" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lib/CoreTestCase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="27" column="52" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FirstTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12360">
+          <caret line="824" column="87" selection-start-line="824" selection-start-column="87" selection-end-line="824" selection-end-column="87" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lib/CoreTestCase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="27" column="52" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FirstTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10230">
+          <caret line="682" selection-start-line="682" selection-end-line="682" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/FirstTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8745">
@@ -505,10 +578,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/lib/CoreTestCase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="27" column="52" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/FirstTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2695">
-          <caret line="823" column="52" selection-start-line="823" selection-start-column="52" selection-end-line="823" selection-end-column="52" />
+        <state relative-caret-position="-1798">
+          <caret line="675" lean-forward="true" selection-start-line="675" selection-end-line="675" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

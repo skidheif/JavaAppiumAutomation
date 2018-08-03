@@ -675,12 +675,13 @@ public class FirstTest {
         );
 
         assertElementPresentEx6(
-                By.id("org.wikipedia:id/view_page_title_text")
+                By.id("org.wikipedia:id/view_page_title_text"),
+                "Cannot find title = "
         );
     }
     // End of the homework "Ex6: Тест: assert title"
 
-    
+
     //under this line are located methods
     private WebElement waitForElementPresent(By by, String error_message, long timeoutInSeconds)
     {
@@ -819,13 +820,14 @@ public class FirstTest {
     }
 
     //under this line is located method for task Ex6
-    private void assertElementPresentEx6(By by)
+    private void assertElementPresentEx6(By by, String error_message)
     {
+        String default_message = "Element " + by.toString() + " not found on the page. ";
         try {
             WebElement element = driver.findElement(by);
         }
         catch (org.openqa.selenium.NoSuchElementException exception) {
-            throw new AssertionError("Element " + by.toString() + " not found on the page");
+            throw new AssertionError(default_message + error_message + driver.findElement(by).getAttribute("text"));
         }
     }
 }
