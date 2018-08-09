@@ -11,16 +11,16 @@ public class SearchPageObject extends MainPageObject{
             SEARCH_CANCEL_BUTTON = "org.wikipedia:id/search_close_btn",
             SEARCH_RESULT_BY_SUBSTRING_TPL = "//*[@resource-id = 'org.wikipedia:id/page_list_item_container']//*[@text = '{SUBSTRING}']",
             SEARCH_RESULT_ELEMENT = "//*[@resource-id = 'org.wikipedia:id/search_results_list']/*[@resource-id = 'org.wikipedia:id/page_list_item_container']",
-            SEARCH_EMPTY_RESULT_ELEMENT = "//*[@text = 'No results found']";
-//            ELEMENTS_IN_LIST = "//*[@resource-id = 'org.wikipedia:id/page_list_item_container'][@index = '{INDEX_OF_TITLE}']",
-//            MY_TITLE_NAME_INPUT = "org.wikipedia:id/search_src_text",
-//            TITLE_CHECK_CLEAR = "org.wikipedia:id/search_empty_message";
-//
-//    private static String getIndexOfTtitle(int index_of_title)
-//    {
-//        String index__title = String.valueOf(index_of_title);
-//        return ELEMENTS_IN_LIST.replace("{INDEX_OF_TITLE}", index__title);
-//    }
+            SEARCH_EMPTY_RESULT_ELEMENT = "//*[@text = 'No results found']",
+            ELEMENTS_IN_LIST = "//*[@resource-id = 'org.wikipedia:id/page_list_item_container'][@index = '{INDEX_OF_TITLE}']",
+            MY_TITLE_NAME_INPUT = "org.wikipedia:id/search_src_text",
+            TITLE_CHECK_CLEAR = "org.wikipedia:id/search_empty_message";
+
+    private static String getIndexOfTitle(int index_of_title)
+    {
+        String index_title = String.valueOf(index_of_title);
+        return ELEMENTS_IN_LIST.replace("{INDEX_OF_TITLE}", index_title);
+    }
 
     public SearchPageObject(AppiumDriver driver)
     {
@@ -90,19 +90,19 @@ public class SearchPageObject extends MainPageObject{
         this.assertElementNotPresent(By.xpath(SEARCH_RESULT_ELEMENT), "We supposed not to find any results");
     }
 
-//    public void waitForElementTitleInList(int index_of_title) //this method for Ex3SearchAndCancelSearch
-//    {
-//        String get_index_of_title = getIndexOfTtitle(index_of_title);
-//        this.waitForElementPresent(By.xpath(get_index_of_title), "Cannot find the first element in list, searching by Swift", 15);
-//    }
-//
-//    public void clearTitleInInput() //this method for Ex3SearchAndCancelSearch
-//    {
-//        this.waitForElementAndClear(By.id(MY_TITLE_NAME_INPUT),"Cannot find input to set name of art",15);
-//    }
-//
-//    public void checkTitleClear() //this method for Ex3SearchAndCancelSearch
-//    {
-//        this.waitForElementAndClear(By.id(TITLE_CHECK_CLEAR),"Cannot find 'Search and read the free encyclopedia in your language'",15);
-//    }
+    public void waitForElementTitleInList(int index_of_title) //this method for Ex3SearchAndCancelSearch
+    {
+        String get_index_of_title = getIndexOfTitle(index_of_title);
+        this.waitForElementPresent(By.xpath(get_index_of_title), "Cannot find the first element in list, searching by Swift", 15);
+    }
+
+    public void clearTitleInInput() //this method for Ex3SearchAndCancelSearch
+    {
+        this.waitForElementAndClear(By.id(MY_TITLE_NAME_INPUT),"Cannot find input to set name of art",15);
+    }
+
+    public void checkTitleClear() //this method for Ex3SearchAndCancelSearch
+    {
+        this.waitForElementAndClear(By.id(TITLE_CHECK_CLEAR),"Cannot find 'Search and read the free encyclopedia in your language'",15);
+    }
 }

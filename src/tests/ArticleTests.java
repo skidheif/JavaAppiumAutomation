@@ -38,4 +38,19 @@ public class ArticleTests extends CoreTestCase {
         ArticlePageObject.waitForTitleElement();
         ArticlePageObject.swipeToFooter();
     }
+
+    //Under this line are located homework "Ex6: Тест: assert title"
+    @Test
+    public void testEx6TestAssertTitle()
+    {
+
+        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject.initSearchInput();
+        SearchPageObject.typeSearchLine("Swift");
+
+        ArticlePageObject ArticlePageObject = new ArticlePageObject(driver);
+        ArticlePageObject.clickByArticleWithTitle(0);
+        ArticlePageObject.assertElementPresentEx6();
+    }
+    // End of the homework "Ex6: Тест: assert title"
 }

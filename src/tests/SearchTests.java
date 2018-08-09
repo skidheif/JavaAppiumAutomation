@@ -51,16 +51,16 @@ public class SearchTests extends CoreTestCase {
         SearchPageObject.assertThereIsNoResultOfSearch();
     }
 
-//    @Test
-//    public void testEx3SearchAndCancelSearch()
-//    {
-//        SearchPageObject SearchPageObject = new SearchPageObject(driver);
-//        SearchPageObject.initSearchInput();
-//        String search_line = "Swift";
-//        SearchPageObject.typeSearchLine(search_line);
-//        SearchPageObject.waitForElementTitleInList(0);
-//        SearchPageObject.waitForElementTitleInList(1);
-//        SearchPageObject.clearTitleInInput();
-//        SearchPageObject.checkTitleClear();
-//    }
+    @Test
+    public void testEx3SearchAndCancelSearch()
+    {
+        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject.initSearchInput();
+        String search_line = "Swift";
+        SearchPageObject.typeSearchLine(search_line);
+        SearchPageObject.waitForElementTitleInList(0);
+        SearchPageObject.waitForElementTitleInList(1);
+        SearchPageObject.clearTitleInInput();
+        SearchPageObject.checkTitleClear();
+    }
 }
