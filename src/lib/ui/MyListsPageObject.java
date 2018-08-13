@@ -7,11 +7,11 @@ import org.openqa.selenium.WebElement;
 public class MyListsPageObject extends MainPageObject {
 
     public static final String
-            FOLDER_BY_NAME = "//*[@resource-id = 'org.wikipedia:id/item_title'][@text = '{FOLDER_NAME}']",
-            ARTICLE_BY_TITLE_TPL = "//*[@text = '{TITLE}']",
-            THE_FIRST_ARTICLE_IN_LIST_PATH = "//*[@resource-id = 'org.wikipedia:id/page_list_item_container']//*[@text = 'Swift']",
-            TITLE_OF_THE_FIRST_ARTICLE_IN_LIST = "org.wikipedia:id/view_page_title_text",
-            SECOND_TITLE_IN_THE_LIST = "//*[@resource-id = 'org.wikipedia:id/page_list_item_title'][@text = 'Swift (programming language)']";
+            FOLDER_BY_NAME = "xpath://*[@resource-id = 'org.wikipedia:id/item_title'][@text = '{FOLDER_NAME}']",
+            ARTICLE_BY_TITLE_TPL = "xpath://*[@text = '{TITLE}']",
+            THE_FIRST_ARTICLE_IN_LIST_PATH = "xpath://*[@resource-id = 'org.wikipedia:id/page_list_item_container']//*[@text = 'Swift']",
+            TITLE_OF_THE_FIRST_ARTICLE_IN_LIST = "id:org.wikipedia:id/view_page_title_text",
+            SECOND_TITLE_IN_THE_LIST = "xpath://*[@resource-id = 'org.wikipedia:id/page_list_item_title'][@text = 'Swift (programming language)']";
 
     private static String getFolderXpathByName(String name_of_folder)
     {
@@ -38,13 +38,13 @@ public class MyListsPageObject extends MainPageObject {
         String folder_name_by_xpath = getFolderXpathByName(name_of_folder);
 
         this.waitForElementPresent(
-                By.xpath(folder_name_by_xpath),
+                folder_name_by_xpath,
                 "Cannot find folder by name" + name_of_folder,
                 10
         );
 
         this.waitForElementAndClick(
-                By.xpath(folder_name_by_xpath),
+                folder_name_by_xpath,
                 "Cannot find folder by name" + name_of_folder,
                 10
         );
@@ -53,19 +53,19 @@ public class MyListsPageObject extends MainPageObject {
     public void waitForArticleToAppearByTitle(String article_title)
     {
         String article_xpath = getSavedArticleXpathByTitle(article_title);
-        this.waitForElementPresent(By.xpath(article_xpath), "Cannot find saved article by title" + article_title, 15);
+        this.waitForElementPresent(article_xpath, "Cannot find saved article by title" + article_title, 15);
     }
 
     public void waitForArticleToDisappearByTitle(String article_title)
     {
         String article_xpath = getSavedArticleXpathByTitle(article_title);
-        this.waitForElementNotPresent(By.xpath(article_xpath), "Saved article still present with title" + article_title, 15);
+        this.waitForElementNotPresent((article_xpath), "Saved article still present with title" + article_title, 15);
     }
 
     public void waitForArticleToDisappearSecondArticle(String article_title)
     {
         String article_xpath = getSavedSecondArticleXpathByTitle(article_title);
-        this.waitForElementNotPresent(By.xpath(article_xpath), "Saved article still present with title" + article_title, 15);
+        this.waitForElementNotPresent((article_xpath), "Saved article still present with title" + article_title, 15);
     }
 
     public void swipeByArticleToDelete(String article_title)
@@ -73,7 +73,7 @@ public class MyListsPageObject extends MainPageObject {
         this.waitForArticleToAppearByTitle(article_title);
         String article_xpath = getSavedArticleXpathByTitle(article_title);
         this.swipeElementToLeft(
-                By.xpath(article_xpath),
+                article_xpath,
                 "Cannot find save article"
         );
         this.waitForArticleToDisappearByTitle(article_title);
@@ -81,7 +81,7 @@ public class MyListsPageObject extends MainPageObject {
 
     public WebElement waitForSecondTitleElement()
     {
-        return this.waitForElementPresent(By.xpath(SECOND_TITLE_IN_THE_LIST), "Cannot find second article title on page!", 15 );
+        return this.waitForElementPresent((SECOND_TITLE_IN_THE_LIST), "Cannot find second article title on page!", 15 );
     }
 
     public String getSecondArticleTitle()
@@ -95,7 +95,7 @@ public class MyListsPageObject extends MainPageObject {
         this.getSavedSecondArticleXpathByTitle(article_title);
         String article_xpath = getSavedSecondArticleXpathByTitle(article_title);
         this.swipeElementToLeft(
-                By.xpath(article_xpath),
+                article_xpath,
                 "Cannot find save article"
         );
         this.waitForArticleToDisappearSecondArticle(article_title);
@@ -104,20 +104,20 @@ public class MyListsPageObject extends MainPageObject {
     public void openTheFirstArticleInListAndCheck()
     {
         this.waitForElementPresent(
-                By.xpath(THE_FIRST_ARTICLE_IN_LIST_PATH),
+                THE_FIRST_ARTICLE_IN_LIST_PATH,
                 "Cannot find the article with title Swift",
                 15
         );
 
         this.waitForElementAndClick(
-                By.xpath(THE_FIRST_ARTICLE_IN_LIST_PATH),
+                THE_FIRST_ARTICLE_IN_LIST_PATH,
                 "Cannot find the element with article Swift in the list",
                 15
         );
 
 
         this.waitForElementPresent(
-                By.id(TITLE_OF_THE_FIRST_ARTICLE_IN_LIST),
+                TITLE_OF_THE_FIRST_ARTICLE_IN_LIST,
                 "Cannot find article title",
                 15
         );
