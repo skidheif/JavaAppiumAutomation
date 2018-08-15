@@ -11,6 +11,7 @@ abstract public class MyListsPageObject extends MainPageObject {
             ARTICLE_BY_TITLE_TPL,
             THE_FIRST_ARTICLE_IN_LIST_PATH,
             TITLE_OF_THE_FIRST_ARTICLE_IN_LIST,
+            XPATH_FOR_SECOND_ELEMENT_IN_LIST_IOS,
             SECOND_TITLE_IN_THE_LIST;
 
     private static String getFolderXpathByName(String name_of_folder)
@@ -62,6 +63,12 @@ abstract public class MyListsPageObject extends MainPageObject {
         this.waitForElementNotPresent((article_xpath), "Saved article still present with title " + article_title, 15);
     }
 
+    public void waitForArticleToDisappearByTitleForIOS()
+    {
+        String article_xpath = XPATH_FOR_SECOND_ELEMENT_IN_LIST_IOS;
+        this.waitForElementNotPresent((article_xpath), "Saved article still present with title ", 15);
+    }
+
     public void waitForArticleToDisappearSecondArticle(String article_title)
     {
         String article_xpath = getSavedSecondArticleXpathByTitle(article_title);
@@ -85,6 +92,20 @@ abstract public class MyListsPageObject extends MainPageObject {
         this.waitForArticleToDisappearByTitle(article_title);
     }
 
+    public void swipeBySecondArticleToDeleteForIOS()
+    {
+        this.waitForElementPresent(
+                XPATH_FOR_SECOND_ELEMENT_IN_LIST_IOS,
+                "Cannot find the second article"
+        );
+        this.swipeElementToLeft(
+                XPATH_FOR_SECOND_ELEMENT_IN_LIST_IOS,
+                "Cannot delete second article"
+        );
+        this.clickElementToTheRightUpperCornerIOS(XPATH_FOR_SECOND_ELEMENT_IN_LIST_IOS, "Cannot find the second article");
+        this.waitForArticleToDisappearByTitleForIOS();
+    }
+
 
     public WebElement waitForSecondTitleElement()
     {
@@ -94,7 +115,11 @@ abstract public class MyListsPageObject extends MainPageObject {
     public String getSecondArticleTitle()
     {
         WebElement title_element = waitForSecondTitleElement();
-        return title_element.getAttribute("text");
+        if (Platform.getInstance().isAndroid()){
+            return title_element.getAttribute("text");
+        } else {
+            return title_element.getAttribute("name");
+        }
     }
 
     public void swipeSecondElementInListByArticleToDelete(String article_title)

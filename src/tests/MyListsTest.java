@@ -53,44 +53,59 @@ public class MyListsTest extends CoreTestCase {
 
 
     //Under this line are located homework "Ex5: Тест: сохранение двух статей"
-    public void testEx5SaveTwoArticleToMyListAndDelete()
-    {
+    public void testEx5SaveTwoArticleToMyListAndDelete() {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
+        ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
+        MyListsPageObject MyListsPageObject = MyListsPageObjectFactory.get(driver);
+        NavigationUI NavigationUI = NavigationUIFactory.get(driver);
+
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine("Swift");
 
-        ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
-
-        MyListsPageObject MyListsPageObject = MyListsPageObjectFactory.get(driver);
-        String article_title = MyListsPageObject.getSecondArticleTitle();//вот тут
-
-        ArticlePageObject.clickByArticleWithTitle(0);
-        ArticlePageObject.waitForTitleElement();
-
-        ArticlePageObject.addArticleToMyList(name_of_folder_for_homework);
-        ArticlePageObject.clearTitleAndChooseOldItem();
-        ArticlePageObject.clickByArticleWithTitle(1);
-        ArticlePageObject.waitForTitleElement();
-        ArticlePageObject.addSecondArticleToMyList(name_of_folder_for_homework);
-        ArticlePageObject.closeArticle();
-
-        NavigationUI NavigationUI = NavigationUIFactory.get(driver);
-        NavigationUI.clickMyLists();
-
-
-        MyListsPageObject.openFolderByName(name_of_folder_for_homework);
-        MyListsPageObject.swipeSecondElementInListByArticleToDelete(article_title);
-
-        ArticlePageObject.waitAndCheckThatSecondElementDelete();
-
-        MyListsPageObject.openTheFirstArticleInListAndCheck();
-
-        String first_element_in_list = ArticlePageObject.getArticleTitle();
-        assertEquals(
-                "We see unexpected title",
-                "Swift",
-                first_element_in_list
-        );
+        if (Platform.getInstance().isAndroid()) {
+            String article_title = MyListsPageObject.getSecondArticleTitle();
+            ArticlePageObject.clickByArticleWithTitle(0);
+            ArticlePageObject.waitForTitleElement();
+            ArticlePageObject.addArticleToMyList(name_of_folder_for_homework);
+            ArticlePageObject.closeArticle();
+            ArticlePageObject.clearTitleAndChooseOldItem();
+            ArticlePageObject.clickByArticleWithTitle(1);
+            ArticlePageObject.waitForTitleElement();
+            ArticlePageObject.addSecondArticleToMyList(name_of_folder_for_homework);
+            ArticlePageObject.closeArticle();
+            NavigationUI.clickMyLists();
+            MyListsPageObject.openFolderByName(name_of_folder_for_homework);
+            MyListsPageObject.swipeSecondElementInListByArticleToDelete(article_title);
+            ArticlePageObject.waitAndCheckThatSecondElementDelete();
+            MyListsPageObject.openTheFirstArticleInListAndCheck();
+            String first_element_in_list = ArticlePageObject.getArticleTitle();
+            assertEquals(
+                    "We see unexpected title",
+                    "Swift",
+                    first_element_in_list
+            );
+        } else {
+            SearchPageObject.clickByArticleWithSubstring("Family of birds");
+            ArticlePageObject.waitForTitleElementForIOS1();
+            ArticlePageObject.addArticlesToMySaved();
+            ArticlePageObject.closeArticle();
+            ArticlePageObject.closeArticle();
+            SearchPageObject.initSearchInput();
+            SearchPageObject.clickByArticleWithSubstring("General-purpose, multi-paradigm, compiled programming language");
+            ArticlePageObject.waitForTitleElementForIOS2();
+            ArticlePageObject.addArticlesToMySaved();
+            ArticlePageObject.closeArticle();
+            NavigationUI.clickMyLists();
+            MyListsPageObject.swipeBySecondArticleToDeleteForIOS();
+            SearchPageObject.clickByArticleWithSubstring("General-purpose, multi-paradigm, compiled programming language");
+            ArticlePageObject.waitForTitleElementForIOS2();
+            String first_element_in_list = ArticlePageObject.getArticleTitleForIOS();
+            assertEquals(
+                    "We see unexpected title",
+                    "Swift (programming language)",
+                    first_element_in_list
+            );
+        }
     }
     // End of the homework "Ex5: Тест: сохранение двух статей"
 }

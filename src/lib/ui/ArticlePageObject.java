@@ -15,6 +15,8 @@ abstract public class ArticlePageObject extends MainPageObject{
             MY_LIST_NAME_INPUT,
             MY_LIST_OK_BUTTON,
             CLOSE_ARTICLE_BUTTON,
+            TITLE_IOS1,
+            TITLE_IOS2,
             ELEMENTS_IN_LIST,
             PAGE_SEARCH_BUTTON,
             OLD_TITLE,
@@ -42,6 +44,16 @@ abstract public class ArticlePageObject extends MainPageObject{
         return this.waitForElementPresent(TITLE, "Cannot find article title on page!", 15 );
     }
 
+    public WebElement waitForTitleElementForIOS1()
+    {
+        return this.waitForElementPresent(TITLE_IOS1, "Cannot find article title on page!", 15 );
+    }
+
+    public WebElement waitForTitleElementForIOS2()
+    {
+        return this.waitForElementPresent(TITLE_IOS2, "Cannot find article title on page!", 15 );
+    }
+
     public String getArticleTitle()
     {
         WebElement title_element = waitForTitleElement();
@@ -50,6 +62,12 @@ abstract public class ArticlePageObject extends MainPageObject{
         } else {
             return title_element.getAttribute("name");
         }
+    }
+
+    public String getArticleTitleForIOS()
+    {
+        WebElement title_element = waitForTitleElementForIOS2();
+        return title_element.getAttribute("name");
     }
 
     public void waitAndCheckThatSecondElementDelete()
