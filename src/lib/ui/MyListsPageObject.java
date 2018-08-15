@@ -1,17 +1,17 @@
 package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import lib.Platform;
 
-public class MyListsPageObject extends MainPageObject {
+abstract public class MyListsPageObject extends MainPageObject {
 
-    public static final String
-            FOLDER_BY_NAME = "xpath://*[@resource-id = 'org.wikipedia:id/item_title'][@text = '{FOLDER_NAME}']",
-            ARTICLE_BY_TITLE_TPL = "xpath://*[@text = '{TITLE}']",
-            THE_FIRST_ARTICLE_IN_LIST_PATH = "xpath://*[@resource-id = 'org.wikipedia:id/page_list_item_container']//*[@text = 'Swift']",
-            TITLE_OF_THE_FIRST_ARTICLE_IN_LIST = "id:org.wikipedia:id/view_page_title_text",
-            SECOND_TITLE_IN_THE_LIST = "xpath://*[@resource-id = 'org.wikipedia:id/page_list_item_title'][@text = 'Swift (programming language)']";
+   protected static String
+            FOLDER_BY_NAME,
+            ARTICLE_BY_TITLE_TPL,
+            THE_FIRST_ARTICLE_IN_LIST_PATH,
+            TITLE_OF_THE_FIRST_ARTICLE_IN_LIST,
+            SECOND_TITLE_IN_THE_LIST;
 
     private static String getFolderXpathByName(String name_of_folder)
     {
@@ -39,13 +39,13 @@ public class MyListsPageObject extends MainPageObject {
 
         this.waitForElementPresent(
                 folder_name_by_xpath,
-                "Cannot find folder by name" + name_of_folder,
+                "Cannot find folder by name " + name_of_folder,
                 10
         );
 
         this.waitForElementAndClick(
                 folder_name_by_xpath,
-                "Cannot find folder by name" + name_of_folder,
+                "Cannot find folder by name " + name_of_folder,
                 10
         );
     }
@@ -53,31 +53,38 @@ public class MyListsPageObject extends MainPageObject {
     public void waitForArticleToAppearByTitle(String article_title)
     {
         String article_xpath = getSavedArticleXpathByTitle(article_title);
-        this.waitForElementPresent(article_xpath, "Cannot find saved article by title" + article_title, 15);
+        this.waitForElementPresent(article_xpath, "Cannot find saved article by title " + article_title, 15);
     }
 
     public void waitForArticleToDisappearByTitle(String article_title)
     {
         String article_xpath = getSavedArticleXpathByTitle(article_title);
-        this.waitForElementNotPresent((article_xpath), "Saved article still present with title" + article_title, 15);
+        this.waitForElementNotPresent((article_xpath), "Saved article still present with title " + article_title, 15);
     }
 
     public void waitForArticleToDisappearSecondArticle(String article_title)
     {
         String article_xpath = getSavedSecondArticleXpathByTitle(article_title);
-        this.waitForElementNotPresent((article_xpath), "Saved article still present with title" + article_title, 15);
+        this.waitForElementNotPresent((article_xpath), "Saved article still present with title " + article_title, 15);
     }
 
     public void swipeByArticleToDelete(String article_title)
     {
+
         this.waitForArticleToAppearByTitle(article_title);
         String article_xpath = getSavedArticleXpathByTitle(article_title);
         this.swipeElementToLeft(
                 article_xpath,
                 "Cannot find save article"
         );
+
+        if (Platform.getInstance().isIOS()){
+            this.clickElementToTheRightUpperCorner(article_xpath, "Cannot find saved article");
+        }
+
         this.waitForArticleToDisappearByTitle(article_title);
     }
+
 
     public WebElement waitForSecondTitleElement()
     {

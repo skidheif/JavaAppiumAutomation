@@ -13,6 +13,18 @@ public class Platform {
     private static final String PLATFORM_Android = "android";
     private static final String APPIUM_URL = "http://127.0.0.1:4723/wd/hub";
 
+    private static Platform instance;
+
+    private Platform(){}
+
+    public static Platform getInstance()
+    {
+        if (instance == null){
+            instance = new Platform();
+        }
+        return instance;
+    }
+
     public AppiumDriver getDriver() throws Exception
     {
         URL URL = new URL(APPIUM_URL);
@@ -53,7 +65,7 @@ public class Platform {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         capabilities.setCapability("platformName", "iOS");
-        capabilities.setCapability("deviceName", "iPhone 5s");
+        capabilities.setCapability("deviceName", "iPhone 7");
         capabilities.setCapability("platformVersion", "11.4");
         capabilities.setCapability("app", "/Users/mac_heif/Documents/Github/JavaAppiumAutomation/apks/Wikipedia.app");
 
